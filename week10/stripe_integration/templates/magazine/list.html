@@ -1,0 +1,13 @@
+<h1> Magazines </h1>
+
+{% include 'payments/card_info.html' %}
+
+{{ csrf_token }}
+
+{% for magazine in object_list %}
+<p>{{ magazine }}</p>
+<a href="{% url 'magazine:article-list' magazine.id %}">view article</a>
+{% endfor %}
+
+
+<form method="POST" action="{% url 'payments:charge-customer' %}">
